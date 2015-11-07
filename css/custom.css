@@ -35,7 +35,29 @@ html {
 	margin: 0 auto;
 	width: 800px;
 }
+thead > tr > th {
+	padding: 1em;
+}
+table {
+	color: #333;
+	width: 90%;
+	margin: 3em auto;
+}
+td{
+	text-align: center;
+	font-size: 1em;
+	padding: 1em;
+}
 
+
+td:nth-child(2n) {
+	background: rgba(0,0,0,0.05);
+}
+
+tr:nth-child(2n) {
+	background: rgba(0,0,0,0.05);
+	color: #111;
+}
 
 
 
