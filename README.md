@@ -1,2 +1,2 @@
-# ChessFrontend
-The Frontend to the Chess Competition
+# Chess Examples  
+Example code for Chess Competition  
