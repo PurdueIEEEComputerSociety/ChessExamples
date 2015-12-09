@@ -7,7 +7,7 @@ def main():
 	gameNum = 1
 	playerID = ''
 	ourTurn = False
-	boardURL = "http://localhost:5000/games/%d/" % (gameNum)
+	boardURL = "http://45.55.69.44:5000/games/%d/" % (gameNum)
 	headers = {"Content-type": "application/json"}
 
 	#Connect to the init endpoint and request our Player information
@@ -31,13 +31,15 @@ def main():
 
                 ourTurn = turnInfo['allow']
                 
-                if turnInfo['gameover'] is True:
-                    playing = False
+                if 'gameover' in turnInfo:
+                    if turnInfo['gameover'] is True:
+                        playing = False
 
-                if turnInfo['winner'] is True:
-                    print "You won!"
-                else:
-                    print "You lost :/"
+                if 'won' in turnInfo:
+                    if turnInfo['won'] is True:
+                        print "You won!"
+                    else:
+                        print "You lost :/"
 
                 time.sleep(30.0 / 1000.0)
 

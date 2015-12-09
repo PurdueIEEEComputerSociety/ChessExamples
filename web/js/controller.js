@@ -4,7 +4,7 @@ var position; //Keep a local account of the board.
 var color = 'w';
 var playerID = "0"; //IDs for local games to switch back and forth.
 var playerID2 = "0";
-var baseURL = "http://localhost:5000"; //Base url for requests
+var baseURL = "http://45.55.69.44:5000"; //Base url for requests
 var currentID = "0"; //Working ID
 var mode = "S"; //S is for local game (with server checking) M is for multiplayer (1 side)
 var intervalKeeper; //Keeps track of interval polling for turn checking.
