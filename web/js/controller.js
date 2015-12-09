@@ -127,7 +127,6 @@ function switchMode() {
 	$("#turn").html("W");
 	$("#playerTurn").html("");
 	//Temp board change SHOULD GET FROM SERVER EVENTUALLY
-	boardID = (boardID == 1)? 0 : 1;
 	$("#initB").show();
 	clearInterval(intervalKeeper);
 
