@@ -12,8 +12,8 @@ var allowed = true;
 var waiting = false;
 
 var boardID = getUrlParameter("boardId");
-if (boardId === undefined) {
-	console.log("Please use a board Id! /?boardId=XX");
+if (boardID === undefined) {
+	$("#turn").html("Please use a board Id! /?boardId=XX");
 }
 
 function onDrop(source, target, piece, newPos, oldPos, orientation) {
