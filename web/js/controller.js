@@ -1,7 +1,6 @@
 //Global variable Listing
 var turn = 'w'; //Keep track of what color's turn it is.
 var position; //Keep a local account of the board.
-var boardID = 1; 
 var color = 'w';
 var playerID = "0"; //IDs for local games to switch back and forth.
 var playerID2 = "0";
@@ -11,6 +10,12 @@ var mode = "S"; //S is for local game (with server checking) M is for multiplaye
 var intervalKeeper; //Keeps track of interval polling for turn checking.
 var allowed = true;
 var waiting = false;
+
+var boardID = getUrlParameter("boardId");
+if (boardId === undefined) {
+	console.log("Please use a board Id! /?boardId=XX");
+}
+
 function onDrop(source, target, piece, newPos, oldPos, orientation) {
 	// console.log("Source: " + source);
 	// console.log("Target: " + target);
@@ -198,6 +203,17 @@ function checkTurn() {
 		error: function(e) {
 		}
 	});
+}
+
+function getUrlParameter(sParam) {
+	var sPageURL = window.location.search.substring(1);
+	var sURLVariables = sPageURL.split('&');
+	for (var i = 0; i < sURLVariables.length; i++) {
+		var sParameterName = sURLVariables[i].split('=');
+		if (sParameterName[0] == sParam) {
+			return sParameterName[1];
+		}
+	}
 }
 
 //Board Initialization
