@@ -4,7 +4,7 @@ var position; //Keep a local account of the board.
 var color = 'w';
 var playerID = "0"; //IDs for local games to switch back and forth.
 var playerID2 = "0";
-var baseURL = "http://10.10.10.10:5000"; //Base url for requests
+var baseURL = "http://localhost:5000"; //Base url for requests
 var currentID = "0"; //Working ID
 var mode = "S"; //S is for local game (with server checking) M is for multiplayer (1 side)
 var intervalKeeper; //Keeps track of interval polling for turn checking.
@@ -107,8 +107,9 @@ function getBoard() {
 
 function turnChange() { 
 	$("#turn").html(($("#turn").html() == "W")? "B":"W");
-	if(mode == "S") currentID = (currentID == playerID)? playerID2 : playerID;
-	else {
+	if (mode == "S") { 
+		currentID = (currentID == playerID)? playerID2 : playerID;
+	} else {
 		turnWait();
 	}
 }
@@ -192,11 +193,18 @@ function checkTurn() {
 		dataType:"json",
 		success: function(data){
 			//console.log(data);
-			if(data.allow) {
+			if (data.allow) {
 				allowed = true;
-			}
-			else {
+			} else {
 				allowed = false;
+			}
+			if (data.gameover == true) {
+				if (data.won == true) {
+					$("#turn").html("You won!")
+				} else {
+					$("#turn").html("You Lost :(")
+				}
+				clearInterval(intervalKeeper);
 			}
 			waiting = false;
 		},
